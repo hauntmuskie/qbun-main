@@ -47,7 +47,7 @@ INSERT INTO `admin` (`id`, `namalengkap`, `user`, `password`) VALUES
 
 --
 -- Table structure for table `data_motor`
--- Updated with new columns: tahun_produksi, warna_motor
+-- Refactored to only include necessary columns
 --
 
 CREATE TABLE `data_motor` (
@@ -56,28 +56,24 @@ CREATE TABLE `data_motor` (
   `merek` varchar(30) NOT NULL,
   `tahun_produksi` varchar(10) NOT NULL,
   `warna_motor` varchar(20) NOT NULL,
-  `harga_otr` varchar(20) NOT NULL,
-  `kapasitas_mesin` varchar(20) NOT NULL,
-  `irit_bahan_bakar` varchar(30) NOT NULL,
-  `desain_model` varchar(30) NOT NULL,
-  `kategori_harga` varchar(20) NOT NULL,
+  `kategori_harga` varchar(30) NOT NULL,
   `kategori_cc` varchar(30) NOT NULL,
-  `kategori_irit` varchar(20) NOT NULL,
+  `kategori_irit` varchar(30) NOT NULL,
   `kategori_desain` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `data_motor`
--- Updated with tahun_produksi and warna_motor values
+-- Refactored to only include necessary columns
 --
 
-INSERT INTO `data_motor` (`id_motor`, `nama_motor`, `merek`, `tahun_produksi`, `warna_motor`, `harga_otr`, `kapasitas_mesin`, `irit_bahan_bakar`, `desain_model`, `kategori_harga`, `kategori_cc`, `kategori_irit`, `kategori_desain`) VALUES
-('M001', 'Yamaha Gear 125', 'Yamaha', '2023', 'Merah', '20.500.000', '125 cc', '55 km/l', 'Sporty/Agresif', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
-('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', '2024', 'Putih', '25.000.000', '125 cc', '52 km/l', 'Retro/Stylish', 'MENENGAH 22 – 35 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish'),
-('M003', 'Yamaha XMAX Connected', 'Yamaha', '2024', 'Biru', '38.000.000', '250 cc', '45 km/l', 'Futuristik/Modern', 'PREMIUM > 35 juta', 'Besar (Premium) > 160 cc', 'Sedang 40–49 km/l', 'Futuristik/Modern'),
-('M004', 'Honda Vario 160 CBS', 'Honda', '2023', 'Hitam', '28.000.000', '160 cc', '51 km/l', 'Sporty/Agresif', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
-('M005', 'Honda PCX 160 CBS', 'Honda', '2024', 'Silver', '32.000.000', '160 cc', '53 km/l', 'Futuristik/Modern', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Futuristik/Modern'),
-('M006', 'Honda Scoopy', 'Honda', '2022', 'Putih', '21.500.000', '110 cc', '54 km/l', 'Retro/Stylish', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish');
+INSERT INTO `data_motor` (`id_motor`, `nama_motor`, `merek`, `tahun_produksi`, `warna_motor`, `kategori_harga`, `kategori_cc`, `kategori_irit`, `kategori_desain`) VALUES
+('M001', 'Yamaha Gear 125', 'Yamaha', '2023', 'Merah', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
+('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', '2024', 'Putih', 'MENENGAH 22 – 35 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish'),
+('M003', 'Yamaha XMAX Connected', 'Yamaha', '2024', 'Biru', 'PREMIUM > 35 juta', 'Besar (Premium) > 160 cc', 'Sedang 40–49 km/l', 'Futuristik/Modern'),
+('M004', 'Honda Vario 160 CBS', 'Honda', '2023', 'Hitam', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
+('M005', 'Honda PCX 160 CBS', 'Honda', '2024', 'Silver', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Futuristik/Modern'),
+('M006', 'Honda Scoopy', 'Honda', '2022', 'Putih', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish');
 
 -- --------------------------------------------------------
 

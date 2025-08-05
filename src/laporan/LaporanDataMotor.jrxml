@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan data motor" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a35a0630-0e03-4d5f-8867-47fd086f8695">
+	<property name="ireport.zoom" value="0.8264462809917359"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Data Motor" uuid="78774293-bb74-49e1-9df6-5fd46b5d2ecc">
+		<queryString>
+			<![CDATA[SELECT * FROM data_motor ORDER BY id_motor;]]>
+		</queryString>
+		<field name="id_motor" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nama_motor" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="merek" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tahun_produksi" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="warna_motor" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="kategori_harga" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="kategori_cc" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="kategori_irit" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="kategori_desain" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="PATH_IMG" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM data_motor ORDER BY id_motor;]]>
+	</queryString>
+	<field name="id_motor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_motor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="merek" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tahun_produksi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="warna_motor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kategori_harga" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kategori_cc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kategori_irit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kategori_desain" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f0f68e88-9493-47b6-bea2-afcf1afc56bd" x="175" y="0" width="439" height="30"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Times New Roman" size="20" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Data Motor Matic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="24420867-119c-4247-bddc-fc9aa94c8b3b" x="222" y="30" width="344" height="30"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Times New Roman" size="20" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Sistem Pendukung Keputusan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ca1b2c60-1bab-4032-8065-18763fff9495" x="175" y="75" width="457" height="30"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Times New Roman" size="12" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Pemilihan Motor Matic Terbaik Menggunakan Metode AHP]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="3dca53f9-4a8b-488d-a484-2fbddfa8fea9" positionType="Float" x="0" y="116" width="802" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3a8735f4-c1cf-4e2c-900f-c320717556d5" positionType="Float" x="0" y="0" width="802" height="35"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN DATA MOTOR]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2ca4f8d4-f49c-456e-b3d8-7705d8eaa69b" style="table_CH" x="0" y="0" width="70" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Motor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d95b6ef-6a86-4e09-8b72-98c8e1d03b22" style="table_CH" x="70" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Motor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c6a4d58e-0f64-4b5e-b1cd-6a9e8befc2b6" style="table_CH" x="190" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Merek]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4d2fc35-4c7e-4ad4-bed6-8ca9c5d2b1a9" style="table_CH" x="270" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tahun]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4f5c638-7d08-4a89-8a6b-1c2d3e4f5a6b" style="table_CH" x="350" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Warna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f6a7b849-8e10-5b9c-9d7e-2f3a4b5c6d7e" style="table_CH" x="430" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kategori Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8b9c05d-1f21-6c0d-ae8f-304b5c6d7e8f" style="table_CH" x="550" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kategori CC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9c0d16e-2f32-7d1e-bf9f-415c6d7e8f9f" style="table_CH" x="670" y="0" width="132" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kategori Desain]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2ca4f8d4-f49c-456e-b3d8-7705d8eaa69b" style="table_TD" x="0" y="0" width="70" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_motor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d95b6ef-6a86-4e09-8b72-98c8e1d03b22" style="table_TD" x="70" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_motor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6a4d58e-0f64-4b5e-b1cd-6a9e8befc2b6" style="table_TD" x="190" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{merek}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b4d2fc35-4c7e-4ad4-bed6-8ca9c5d2b1a9" style="table_TD" x="270" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tahun_produksi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4f5c638-7d08-4a89-8a6b-1c2d3e4f5a6b" style="table_TD" x="350" y="0" width="80" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{warna_motor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f6a7b849-8e10-5b9c-9d7e-2f3a4b5c6d7e" style="table_TD" x="430" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kategori_harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a8b9c05d-1f21-6c0d-ae8f-304b5c6d7e8f" style="table_TD" x="550" y="0" width="120" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kategori_cc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9c0d16e-2f32-7d1e-bf9f-415c6d7e8f9f" style="table_TD" x="670" y="0" width="132" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kategori_desain}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2cd7b10c-a3d2-4b92-a9c4-5e6f7a8b9c0d" x="681" y="34" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="3de8c21d-b4e3-5c03-bad5-6f7a8b9c0d1e" x="761" y="34" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
