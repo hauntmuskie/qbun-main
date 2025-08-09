@@ -89,12 +89,13 @@ public class SubKriteriaAhp {
 
     // set Nilai
     public static void setNilaiKriteria4x4() {
-        // nilai dari matriks berapasangan kriteria
+        // nilai dari matriks berapasangan kriteria sesuai paper
+        // Expected column totals: HARGA=1.676, MESIN/CC=4.533, IRIT BENSIN=9.333, DESAIN=16.000
         double matriks[][] = {
-                { 1, 3.0, 5.0, 9.0 },
-                { 1.0 / 3.0, 1, 3.0, 5.0 },
-                { 1.0 / 5.0, 1.0 / 3.0, 1, 3.0 },
-                { 1.0 / 9.0, 1.0 / 5.0, 1.0 / 3.0, 1 }
+                { 1.0, 3.0, 5.0, 7.0 },           // HARGA
+                { 0.333, 1.0, 3.0, 5.0 },         // MESIN/CC (1/3 = 0.333)
+                { 0.200, 0.333, 1.0, 3.0 },       // IRIT BENSIN (1/5 = 0.200, 1/3 = 0.333)
+                { 0.143, 0.200, 0.333, 1.0 }      // DESAIN (1/7 = 0.143, 1/5 = 0.200, 1/3 = 0.333)
         };
         for (int row = 0; row < nBanyak4x4; row++) {
             for (int col = 0; col < nBanyak4x4; col++) {
@@ -167,13 +168,78 @@ public class SubKriteriaAhp {
         }
     }
 
-    // set Nilai
+    // set Nilai - using values from the research paper for all subcriteria
     public static void setNilaiKriteria3x3() {
-        // nilai dari matriks berapasangan kriteria
+        // Default matrix based on paper pattern (HARGA subcriteria as default)
+        // Expected column totals: 1.533, 4.333, 9.000
         double matriks[][] = {
-                { 1, 3.0, 7.0 },
-                { 1.0 / 3.0, 1, 3.0 },
-                { 1.0 / 7.0, 1.0 / 3.0, 1 },
+                { 1.0, 3.0, 5.0 },        // First subcriteria (highest priority)
+                { 0.333, 1.0, 3.0 },      // Second subcriteria (medium priority) (1/3 = 0.333)
+                { 0.200, 0.333, 1.0 },    // Third subcriteria (lowest priority) (1/5 = 0.200, 1/3 = 0.333)
+        };
+        for (int row = 0; row < nBanyak3x3; row++) {
+            for (int col = 0; col < nBanyak3x3; col++) {
+                matriksBerpasangan3x3[row][col] = matriks[row][col];
+            }
+        }
+    }
+    
+    // MATRIKS PERBANDINGAN BERPASANGAN SUBKRITERIA HARGA
+    // EKONOMIS, MENENGAH, PREMIUM
+    // Expected column totals: EKONOMIS=1.533, MENENGAH=4.333, PREMIUM=9.000
+    public static void setNilaiSubkriteriaHarga() {
+        double matriks[][] = {
+                { 1.0, 3.0, 5.0 },      // EKONOMIS
+                { 0.333, 1.0, 3.0 },    // MENENGAH (1/3 = 0.333)
+                { 0.200, 0.333, 1.0 }   // PREMIUM (1/5 = 0.200, 1/3 = 0.333)
+        };
+        for (int row = 0; row < nBanyak3x3; row++) {
+            for (int col = 0; col < nBanyak3x3; col++) {
+                matriksBerpasangan3x3[row][col] = matriks[row][col];
+            }
+        }
+    }
+    
+    // MATRIKS PERBANDINGAN BERPASANGAN SUBKRITERIA CC (Kapasitas Mesin)
+    // Kecil (Entry), Sedang (Mid-range), Besar (Premium)
+    // Expected column totals: Kecil=2.333, Sedang=2.333, Besar=7.000
+    public static void setNilaiSubkriteriaCC() {
+        double matriks[][] = {
+                { 1.0, 1.0, 3.0 },      // Kecil (Entry)
+                { 1.0, 1.0, 3.0 },      // Sedang (Mid-range)
+                { 0.333, 0.333, 1.0 }   // Besar (Premium) (1/3 = 0.333)
+        };
+        for (int row = 0; row < nBanyak3x3; row++) {
+            for (int col = 0; col < nBanyak3x3; col++) {
+                matriksBerpasangan3x3[row][col] = matriks[row][col];
+            }
+        }
+    }
+    
+    // MATRIKS PERBANDINGAN BERPASANGAN SUBKRITERIA IRIT BENSIN
+    // Irit, Sedang, Boros
+    // Expected column totals: Irit=1.476, Sedang=4.200, Boros=13.000
+    public static void setNilaiSubkriteriaIrit() {
+        double matriks[][] = {
+                { 1.0, 3.0, 7.0 },      // Irit
+                { 0.333, 1.0, 5.0 },    // Sedang (1/3 = 0.333)
+                { 0.143, 0.200, 1.0 }   // Boros (1/7 = 0.143, 1/5 = 0.200)
+        };
+        for (int row = 0; row < nBanyak3x3; row++) {
+            for (int col = 0; col < nBanyak3x3; col++) {
+                matriksBerpasangan3x3[row][col] = matriks[row][col];
+            }
+        }
+    }
+    
+    // MATRIKS PERBANDINGAN BERPASANGAN SUBKRITERIA DESAIN
+    // Sporty/Agresif, Retro/Stylish, Futuristik/Modern
+    // Expected column totals: Sporty=1.533, Retro=4.333, Futuristik=9.000
+    public static void setNilaiSubkriteriaDesain() {
+        double matriks[][] = {
+                { 1.0, 3.0, 5.0 },      // Sporty/Agresif
+                { 0.333, 1.0, 3.0 },    // Retro/Stylish (1/3 = 0.333)
+                { 0.200, 0.333, 1.0 }   // Futuristik/Modern (1/5 = 0.200, 1/3 = 0.333)
         };
         for (int row = 0; row < nBanyak3x3; row++) {
             for (int col = 0; col < nBanyak3x3; col++) {

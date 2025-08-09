@@ -75,14 +75,16 @@ public class KriteriaAhp {
         return IR;
     }
 
-    // set Nilai
+    // set Nilai based on the paper - MATRIKS PERBANDINGAN BERPASANGAN
     public void setNilaiKriteria() {
-        // nilai dari matriks berapasangan kriteria
+        // nilai dari matriks berapasangan kriteria sesuai paper
+        // K1=HARGA, K2=MESIN/CC, K3=IRIT BENSIN, K4=DESAIN
+        // Expected column totals: HARGA=1.676, MESIN/CC=4.533, IRIT BENSIN=9.333, DESAIN=16.000
         double matriks[][] = {
-                { 1, 5.0, 7.0, 9.0 },
-                { 1.0 / 5.0, 1, 5.0, 7.0 },
-                { 1.0 / 7.0, 1.0 / 5.0, 1, 5.0 },
-                { 1.0 / 9.0, 1.0 / 7.0, 1.0 / 5.0, 1 }
+                { 1.0, 3.0, 5.0, 7.0 },           // HARGA
+                { 0.333, 1.0, 3.0, 5.0 },         // MESIN/CC (1/3 = 0.333)
+                { 0.200, 0.333, 1.0, 3.0 },       // IRIT BENSIN (1/5 = 0.200, 1/3 = 0.333)
+                { 0.143, 0.200, 0.333, 1.0 }      // DESAIN (1/7 = 0.143, 1/5 = 0.200, 1/3 = 0.333)
         };
         for (int row = 0; row < nBanyak; row++) {
             for (int col = 0; col < nBanyak; col++) {
@@ -157,3 +159,4 @@ public class KriteriaAhp {
         MatriksPenjumlahan();
     }
 }
+//

@@ -19,6 +19,7 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
     private Connection conn = new Koneksi().connect();
     protected KriteriaAhp kriteria = new KriteriaAhp();
     protected SubKriteriaAhp SubK = new SubKriteriaAhp();
+    protected AHPCalculation ahpCalc = new AHPCalculation(); // New AHP calculator
     DecimalFormat df = new DecimalFormat("#.###");
     ArrayList<String> K = new ArrayList<String>();
     ArrayList<Double> KS4x4 = new ArrayList<Double>();
@@ -83,48 +84,106 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
         k4k2N.setText(df.format(kriteria.matriksNormalisasi[3][1]));
         k4k3N.setText(df.format(kriteria.matriksNormalisasi[3][2]));
         k4k4N.setText(df.format(kriteria.matriksNormalisasi[3][3]));
+        
+        // Display priorities with validation against paper values
         Prior1.setText(df.format(kriteria.prioritas[0]));
         Prior2.setText(df.format(kriteria.prioritas[1]));
         Prior3.setText(df.format(kriteria.prioritas[2]));
         Prior4.setText(df.format(kriteria.prioritas[3]));
+        
+        // Validate against expected paper values
+        double[] expectedPriorities = {0.558, 0.263, 0.122, 0.057};
+        String[] criteriaNames = {"HARGA", "MESIN/CC", "IRIT BENSIN", "DESAIN"};
+        
+        System.out.println("\n=== CRITERIA PRIORITIES VALIDATION ===");
+        for (int i = 0; i < 4; i++) {
+            double diff = Math.abs(kriteria.prioritas[i] - expectedPriorities[i]);
+            boolean matches = diff < 0.01;
+            System.out.printf("K%d %s: %.3f (expected: %.3f) diff: %.3f %s%n", 
+                (i+1), criteriaNames[i], kriteria.prioritas[i], expectedPriorities[i], 
+                diff, matches ? "✓" : "✗");
+        }
 
     }
 
     // nilai prioritas untuk sub-kriteria dari kriteria yang tersedia
+    // Menggunakan nilai dari paper research yang sudah dihitung dengan AHP
     public void getPrioritasSub() {
         getKriteria();
-        // All criteria now use 3x3 subcriteria matrix
-        SubK.hitungSubKriteria3x3();
-
-        // Use 3x3 priorities for all criteria
-        for (int i = 0; i < K.size() && i < 4; i++) {
-            switch (i) {
-                case 0:
-                    PriorS11.setText(df.format(SubK.prioritasSub3x3[0]));
-                    PriorS12.setText(df.format(SubK.prioritasSub3x3[1]));
-                    PriorS13.setText(df.format(SubK.prioritasSub3x3[2]));
-                    PriorS14.setText("0"); // Not used in 3x3
-                    break;
-                case 1:
-                    PriorS21.setText(df.format(SubK.prioritasSub3x3[0]));
-                    PriorS22.setText(df.format(SubK.prioritasSub3x3[1]));
-                    PriorS23.setText(df.format(SubK.prioritasSub3x3[2]));
-                    PriorS24.setText("0"); // Not used in 3x3
-                    break;
-                case 2:
-                    PriorS31.setText(df.format(SubK.prioritasSub3x3[0]));
-                    PriorS32.setText(df.format(SubK.prioritasSub3x3[1]));
-                    PriorS33.setText(df.format(SubK.prioritasSub3x3[2]));
-                    PriorS34.setText("0"); // Not used in 3x3
-                    break;
-                case 3:
-                    PriorS41.setText(df.format(SubK.prioritasSub3x3[0]));
-                    PriorS42.setText(df.format(SubK.prioritasSub3x3[1]));
-                    PriorS43.setText(df.format(SubK.prioritasSub3x3[2]));
-                    PriorS44.setText("0"); // Not used in 3x3
-                    break;
-            }
-        }
+        
+        // Calculate subcriteria weights for each criterion using the new AHP calculation
+        ahpCalc.calculateAll();
+        double[][] subWeights = ahpCalc.getSubcriteriaWeights();
+        
+        // Expected values from paper for validation
+        double[][] expectedSubWeights = {
+            {0.633, 0.260, 0.106}, // Harga: EKONOMIS, MENENGAH, PREMIUM
+            {0.429, 0.429, 0.143}, // CC: Kecil, Sedang, Besar  
+            {0.643, 0.283, 0.074}, // Irit: Irit, Sedang, Boros
+            {0.633, 0.260, 0.106}  // Desain: Sporty, Retro, Futuristik
+        };
+        
+        System.out.println("\n=== SUBCRITERIA WEIGHTS CALCULATION AND DISPLAY ===");
+        
+        // K1 - HARGA: EKONOMIS, MENENGAH, PREMIUM (Expected: 0.633, 0.260, 0.106)
+        // Use HARGA specific matrix
+        SubKriteriaAhp.setNilaiSubkriteriaHarga();
+        SubKriteriaAhp.MatriksBerpasangan3x3();  
+        SubK.MatriksNormalisasi3x3();
+        PriorS11.setText(df.format(subWeights[0][0])); // EKONOMIS
+        PriorS12.setText(df.format(subWeights[0][1])); // MENENGAH  
+        PriorS13.setText(df.format(subWeights[0][2])); // PREMIUM
+        PriorS14.setText(""); // Not used for 3x3 matrix
+        
+        System.out.printf("HARGA: EKONOMIS=%.3f (exp: %.3f), MENENGAH=%.3f (exp: %.3f), PREMIUM=%.3f (exp: %.3f)%n",
+            subWeights[0][0], expectedSubWeights[0][0],
+            subWeights[0][1], expectedSubWeights[0][1], 
+            subWeights[0][2], expectedSubWeights[0][2]);
+        
+        // K2 - MESIN/CC: Kecil, Sedang, Besar (Expected: 0.429, 0.429, 0.143)
+        // Use CC specific matrix
+        SubKriteriaAhp.setNilaiSubkriteriaCC();
+        SubKriteriaAhp.MatriksBerpasangan3x3();
+        SubK.MatriksNormalisasi3x3();
+        PriorS21.setText(df.format(subWeights[1][0])); // Kecil (Entry)
+        PriorS22.setText(df.format(subWeights[1][1])); // Sedang (Mid-range)
+        PriorS23.setText(df.format(subWeights[1][2])); // Besar (Premium)
+        PriorS24.setText(""); // Not used for 3x3 matrix
+        
+        System.out.printf("MESIN/CC: Kecil=%.3f (exp: %.3f), Sedang=%.3f (exp: %.3f), Besar=%.3f (exp: %.3f)%n",
+            subWeights[1][0], expectedSubWeights[1][0],
+            subWeights[1][1], expectedSubWeights[1][1], 
+            subWeights[1][2], expectedSubWeights[1][2]);
+        
+        // K3 - IRIT BENSIN: Irit, Sedang, Boros (Expected: 0.643, 0.283, 0.074)
+        // Use IRIT specific matrix
+        SubKriteriaAhp.setNilaiSubkriteriaIrit();
+        SubKriteriaAhp.MatriksBerpasangan3x3();
+        SubK.MatriksNormalisasi3x3();
+        PriorS31.setText(df.format(subWeights[2][0])); // Irit
+        PriorS32.setText(df.format(subWeights[2][1])); // Sedang
+        PriorS33.setText(df.format(subWeights[2][2])); // Boros
+        PriorS34.setText(""); // Not used for 3x3 matrix
+        
+        System.out.printf("IRIT BENSIN: Irit=%.3f (exp: %.3f), Sedang=%.3f (exp: %.3f), Boros=%.3f (exp: %.3f)%n",
+            subWeights[2][0], expectedSubWeights[2][0],
+            subWeights[2][1], expectedSubWeights[2][1], 
+            subWeights[2][2], expectedSubWeights[2][2]);
+        
+        // K4 - DESAIN: Sporty/Agresif, Retro/Stylish, Futuristik/Modern (Expected: 0.633, 0.260, 0.106)
+        // Use DESAIN specific matrix
+        SubKriteriaAhp.setNilaiSubkriteriaDesain();
+        SubKriteriaAhp.MatriksBerpasangan3x3();
+        SubK.MatriksNormalisasi3x3();
+        PriorS41.setText(df.format(subWeights[3][0])); // Sporty/Agresif
+        PriorS42.setText(df.format(subWeights[3][1])); // Retro/Stylish
+        PriorS43.setText(df.format(subWeights[3][2])); // Futuristik/Modern
+        PriorS44.setText(""); // Not used for 3x3 matrix
+        
+        System.out.printf("DESAIN: Sporty=%.3f (exp: %.3f), Retro=%.3f (exp: %.3f), Futuristik=%.3f (exp: %.3f)%n",
+            subWeights[3][0], expectedSubWeights[3][0],
+            subWeights[3][1], expectedSubWeights[3][1], 
+            subWeights[3][2], expectedSubWeights[3][2]);
     }
 
     // menentukan kriteria pada kode K1, K2, K3, K4
@@ -180,62 +239,107 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
     }
 
     // melakukan perhitungan dari alternatif yang dipilih
-    // untuk mendapatkan hasil penilaian
+    // untuk mendapatkan hasil penilaian menggunakan formula dari paper
     public void getPenilaian() {
         totalNilai = 0.0; // Reset total before calculation
         getAlternatif();
         kriteria.hitungKriteria();
-        SubK.hitungSubKriteria3x3();
-
-        // perhitungan untuk harga (K1) - using 3x3 matrix
-        if (kategoriHargaAlternatif.contains("EKONOMIS")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[0] * kriteria.prioritas[0];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriHargaAlternatif.contains("MENENGAH")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[1] * kriteria.prioritas[0];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriHargaAlternatif.contains("PREMIUM")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[2] * kriteria.prioritas[0];
-            totalNilai += nilaiAlternatif;
+        
+        // Use the new AHP calculation based on the paper
+        ahpCalc.calculateAll();
+        
+        // Get criteria weights from the new calculation (should match paper values)
+        double[] criteriaWeights = ahpCalc.getCriteriaWeights();
+        double[][] subcriteriaWeights = ahpCalc.getSubcriteriaWeights();
+        
+        System.out.println("\n=== DETAILED CALCULATION FOR: " + namaMotorAlternatif + " ===");
+        System.out.println("Motor Categories:");
+        System.out.println("  Harga: " + kategoriHargaAlternatif);
+        System.out.println("  CC: " + kategoriCcAlternatif);
+        System.out.println("  Irit: " + kategoriIritAlternatif); 
+        System.out.println("  Desain: " + kategoriDesainAlternatif);
+        
+        // Map categories to indices for calculation
+        int priceIndex = getPriceIndex(kategoriHargaAlternatif);
+        int ccIndex = getCCIndex(kategoriCcAlternatif);  
+        int fuelIndex = getFuelIndex(kategoriIritAlternatif);
+        int designIndex = getDesignIndex(kategoriDesainAlternatif);
+        
+        System.out.println("\nFormula: Total Score = Σ(Subcriteria Weight × Criteria Weight)");
+        
+        // Calculate using the paper's formula: 
+        // Total Score = Σ(Subcriteria Weight × Criteria Weight)
+        
+        // HARGA contribution (K1)
+        if (priceIndex >= 0) {
+            double hargaContribution = subcriteriaWeights[0][priceIndex] * criteriaWeights[0];
+            totalNilai += hargaContribution;
+            System.out.printf("K1 HARGA: %.3f × %.3f = %.3f%n", 
+                subcriteriaWeights[0][priceIndex], criteriaWeights[0], hargaContribution);
         }
-
-        // perhitungan untuk kapasitas mesin (K2) - using 3x3 matrix
-        if (kategoriCcAlternatif.contains("Kecil")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[0] * kriteria.prioritas[1];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriCcAlternatif.contains("Sedang")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[1] * kriteria.prioritas[1];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriCcAlternatif.contains("Besar")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[2] * kriteria.prioritas[1];
-            totalNilai += nilaiAlternatif;
+        
+        // MESIN/CC contribution (K2)  
+        if (ccIndex >= 0) {
+            double ccContribution = subcriteriaWeights[1][ccIndex] * criteriaWeights[1];
+            totalNilai += ccContribution;
+            System.out.printf("K2 MESIN/CC: %.3f × %.3f = %.3f%n", 
+                subcriteriaWeights[1][ccIndex], criteriaWeights[1], ccContribution);
         }
-
-        // perhitungan untuk irit bahan bakar (K3) - using 3x3 matrix
-        if (kategoriIritAlternatif.contains("Irit")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[0] * kriteria.prioritas[2];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriIritAlternatif.contains("Sedang")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[1] * kriteria.prioritas[2];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriIritAlternatif.contains("Boros")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[2] * kriteria.prioritas[2];
-            totalNilai += nilaiAlternatif;
+        
+        // IRIT BENSIN contribution (K3)
+        if (fuelIndex >= 0) {
+            double fuelContribution = subcriteriaWeights[2][fuelIndex] * criteriaWeights[2];
+            totalNilai += fuelContribution;
+            System.out.printf("K3 IRIT BENSIN: %.3f × %.3f = %.3f%n", 
+                subcriteriaWeights[2][fuelIndex], criteriaWeights[2], fuelContribution);
         }
-
-        // perhitungan untuk desain (K4) - using 3x3 matrix
-        if (kategoriDesainAlternatif.contains("Sporty/Agresif")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[0] * kriteria.prioritas[3];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriDesainAlternatif.contains("Retro/Stylish")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[1] * kriteria.prioritas[3];
-            totalNilai += nilaiAlternatif;
-        } else if (kategoriDesainAlternatif.contains("Futuristik/Modern")) {
-            nilaiAlternatif = SubK.prioritasSub3x3[2] * kriteria.prioritas[3];
-            totalNilai += nilaiAlternatif;
+        
+        // DESAIN contribution (K4)
+        if (designIndex >= 0) {
+            double designContribution = subcriteriaWeights[3][designIndex] * criteriaWeights[3];
+            totalNilai += designContribution;
+            System.out.printf("K4 DESAIN: %.3f × %.3f = %.3f%n", 
+                subcriteriaWeights[3][designIndex], criteriaWeights[3], designContribution);
         }
-
+        
+        System.out.printf("TOTAL SCORE: %.3f%n", totalNilai);
         TotalNilai.setText(df.format(totalNilai));
+        
+        // Verify with direct AHP calculation
+        if (priceIndex >= 0 && ccIndex >= 0 && fuelIndex >= 0 && designIndex >= 0) {
+            double directScore = ahpCalc.calculateFinalScore(priceIndex, ccIndex, fuelIndex, designIndex);
+            System.out.printf("Direct AHP calculation: %.3f %s%n", directScore, 
+                Math.abs(totalNilai - directScore) < 0.001 ? "✓ Match" : "✗ Mismatch");
+        }
+    }
+    
+    // Helper methods to map category strings to indices
+    private int getPriceIndex(String kategori) {
+        if (kategori.contains("EKONOMIS")) return 0;
+        if (kategori.contains("MENENGAH")) return 1;
+        if (kategori.contains("PREMIUM")) return 2;
+        return -1;
+    }
+    
+    private int getCCIndex(String kategori) {
+        if (kategori.contains("Kecil")) return 0;
+        if (kategori.contains("Sedang")) return 1;
+        if (kategori.contains("Besar")) return 2;
+        return -1;
+    }
+    
+    private int getFuelIndex(String kategori) {
+        if (kategori.contains("Irit")) return 0;
+        if (kategori.contains("Sedang")) return 1;
+        if (kategori.contains("Boros")) return 2;
+        return -1;
+    }
+    
+    private int getDesignIndex(String kategori) {
+        if (kategori.contains("Sporty/Agresif")) return 0;
+        if (kategori.contains("Retro/Stylish")) return 1;
+        if (kategori.contains("Futuristik/Modern")) return 2;
+        return -1;
     }
 
     // Mendapatkan relasi pada combobox pada database data motor
@@ -1461,25 +1565,119 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
         }
 
         try {
-            // Mendapatkan perhitungan metode AHP
+            System.out.println("=== STARTING AHP CALCULATION BASED ON RESEARCH PAPER ===");
+            
+            // Initialize new AHP calculation with exact paper values
+            ahpCalc = new AHPCalculation();
+            
+            // Validate our matrices match the paper exactly
+            validateMatricesAgainstPaper();
+            
+            // Mendapatkan perhitungan metode AHP menggunakan formula dari paper
             kriteria.hitungKriteria();
-            SubK.hitungSubKriteria3x3();
+            ahpCalc.calculateAll();
 
+            // Display matrices and calculations
             getMatriksK();
             getMatriksNorK();
             getPrioritasSub();
             getAlternatif();
             getPenilaian();
-
+            
+            // Show detailed validation results
+            System.out.println("\n=== VALIDATION RESULTS ===");
+            validateCriteriaWeights();
+            validateSubcriteriaWeights();
+            
             JOptionPane.showMessageDialog(null,
-                    "Perhitungan berhasil! Total nilai: " + TotalNilai.getText());
+                    "Perhitungan AHP berhasil berdasarkan paper research!\n" +
+                    "Total nilai: " + TotalNilai.getText() + "\n" +
+                    "Motor: " + namaMotorAlternatif + "\n" +
+                    "Lihat console untuk detail perhitungan dan validasi.");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error dalam perhitungan: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error dalam perhitungan AHP: " + e.getMessage());
             e.printStackTrace();
         }
 
     }// GEN-LAST:event_mulaiHitungActionPerformed
+    
+    /**
+     * Validate that our matrices match the paper exactly
+     */
+    private void validateMatricesAgainstPaper() {
+        System.out.println("\n=== MATRIX VALIDATION ===");
+        
+        double[][] criteriaMatrix = ahpCalc.getCriteriaMatrix();
+        double[] expectedCriteriaTotals = {1.676, 4.533, 9.333, 16.000};
+        String[] criteriaNames = {"HARGA", "MESIN/CC", "IRIT BENSIN", "DESAIN"};
+        
+        System.out.println("Criteria Matrix Column Totals:");
+        for (int j = 0; j < 4; j++) {
+            double sum = 0;
+            for (int i = 0; i < 4; i++) {
+                sum += criteriaMatrix[i][j];
+            }
+            boolean matches = Math.abs(sum - expectedCriteriaTotals[j]) < 0.01;
+            System.out.printf("  %s: %.3f (expected: %.3f) %s%n", 
+                criteriaNames[j], sum, expectedCriteriaTotals[j], matches ? "✓" : "✗");
+        }
+    }
+    
+    /**
+     * Validate criteria weights against paper values
+     */
+    private void validateCriteriaWeights() {
+        double[] weights = ahpCalc.getCriteriaWeights();
+        double[] expectedWeights = {0.558, 0.263, 0.122, 0.057};
+        String[] names = {"HARGA", "MESIN/CC", "IRIT BENSIN", "DESAIN"};
+        
+        System.out.println("Criteria Weights Validation:");
+        boolean allMatch = true;
+        for (int i = 0; i < 4; i++) {
+            double diff = Math.abs(weights[i] - expectedWeights[i]);
+            boolean matches = diff < 0.01;
+            System.out.printf("  %s: %.3f (expected: %.3f) diff: %.3f %s%n", 
+                names[i], weights[i], expectedWeights[i], diff, matches ? "✓" : "✗");
+            if (!matches) allMatch = false;
+        }
+        System.out.println("Overall criteria weights: " + (allMatch ? "PASSED" : "NEEDS ADJUSTMENT"));
+    }
+    
+    /**
+     * Validate subcriteria weights against paper values
+     */
+    private void validateSubcriteriaWeights() {
+        double[][] weights = ahpCalc.getSubcriteriaWeights();
+        double[][] expectedWeights = {
+            {0.633, 0.260, 0.106}, // Harga
+            {0.429, 0.429, 0.143}, // CC
+            {0.643, 0.283, 0.074}, // Irit
+            {0.633, 0.260, 0.106}  // Desain
+        };
+        
+        String[] criteriaNames = {"HARGA", "MESIN/CC", "IRIT BENSIN", "DESAIN"};
+        String[][] subNames = {
+            {"EKONOMIS", "MENENGAH", "PREMIUM"},
+            {"Kecil", "Sedang", "Besar"},
+            {"Irit", "Sedang", "Boros"}, 
+            {"Sporty", "Retro", "Futuristik"}
+        };
+        
+        System.out.println("Subcriteria Weights Validation:");
+        boolean allMatch = true;
+        for (int i = 0; i < 4; i++) {
+            System.out.println("  " + criteriaNames[i] + ":");
+            for (int j = 0; j < 3; j++) {
+                double diff = Math.abs(weights[i][j] - expectedWeights[i][j]);
+                boolean matches = diff < 0.01;
+                System.out.printf("    %s: %.3f (expected: %.3f) diff: %.3f %s%n",
+                    subNames[i][j], weights[i][j], expectedWeights[i][j], diff, matches ? "✓" : "✗");
+                if (!matches) allMatch = false;
+            }
+        }
+        System.out.println("Overall subcriteria weights: " + (allMatch ? "PASSED" : "NEEDS ADJUSTMENT"));
+    }
 
     // mendapatkan nama motor dari id yang dipilih
     private void cbIdMotorItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_cbIdMotorItemStateChanged

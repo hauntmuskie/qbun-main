@@ -69,7 +69,7 @@ CREATE TABLE `data_motor` (
 
 INSERT INTO `data_motor` (`id_motor`, `nama_motor`, `merek`, `tahun_produksi`, `warna_motor`, `kategori_harga`, `kategori_cc`, `kategori_irit`, `kategori_desain`) VALUES
 ('M001', 'Yamaha Gear 125', 'Yamaha', '2023', 'Merah', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
-('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', '2024', 'Putih', 'MENENGAH 22 – 35 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish'),
+('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', '2024', 'Putih', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish'),
 ('M003', 'Yamaha XMAX Connected', 'Yamaha', '2024', 'Biru', 'PREMIUM > 35 juta', 'Besar (Premium) > 160 cc', 'Sedang 40–49 km/l', 'Futuristik/Modern'),
 ('M004', 'Honda Vario 160 CBS', 'Honda', '2023', 'Hitam', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
 ('M005', 'Honda PCX 160 CBS', 'Honda', '2024', 'Silver', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Futuristik/Modern'),
@@ -136,13 +136,6 @@ CREATE TABLE `seleksi` (
 -- Dumping data for table `seleksi`
 --
 
-INSERT INTO `seleksi` (`id_motor`, `nama_motor`, `merek`, `hasil_penilaian`, `ranking`) VALUES
-('M001', 'Yamaha Gear 125', 'Yamaha', 2.34, 1),
-('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', 1.59, 3),
-('M003', 'Yamaha XMAX Connected', 'Yamaha', 0.64, 6),
-('M004', 'Honda Vario 160 CBS', 'Honda', 1.97, 2),
-('M005', 'Honda PCX 160 CBS', 'Honda', 1.44, 4),
-('M006', 'Honda Scoopy', 'Honda', 1.28, 5);
 
 -- --------------------------------------------------------
 
