@@ -4,15 +4,23 @@ import LoginAdmin.Login;
 import java.sql.Connection;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.util.HashMap;
 import java.util.Locale;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import koneksi.Koneksi;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author Neubri
  */
 public class MenuUtama extends javax.swing.JFrame {
+    private Connection conn = (Connection) new Koneksi().connect();
+
     Color hoverButton;
 
     /**
@@ -642,7 +650,15 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void laporanHasilSeleksiMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanHasilSeleksiMouseClicked
         // TODO add your handling code here:
-
+        try {
+            String report = "./src/laporan/LaporanHasilSeleksi.jasper";
+            HashMap<String, Object> param = new HashMap<>();
+            JasperPrint print = JasperFillManager.fillReport(report, param, conn);
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.err.println(ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
     }// GEN-LAST:event_laporanHasilSeleksiMouseClicked
 
     private void laporanPrioritasSubKriteriaMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanPrioritasSubKriteriaMouseExited
@@ -659,6 +675,16 @@ public class MenuUtama extends javax.swing.JFrame {
     private void laporanPrioritasSubKriteriaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanPrioritasSubKriteriaMouseClicked
         // TODO add your handling code here:
 
+        try {
+            String report = "./src/laporan/LaporanPrioritasSubKriteria.jasper";
+            HashMap<String, Object> param = new HashMap<>();
+            JasperPrint print = JasperFillManager.fillReport(report, param, conn);
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.err.println(ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
+
     }// GEN-LAST:event_laporanPrioritasSubKriteriaMouseClicked
 
     private void laporanPrioritasKriteriaMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanPrioritasKriteriaMouseExited
@@ -674,6 +700,15 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void laporanPrioritasKriteriaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanPrioritasKriteriaMouseClicked
         // TODO add your handling code here:
+        try {
+            String report = "./src/laporan/LaporanPrioritasKriteria.jasper";
+            HashMap<String, Object> param = new HashMap<>();
+            JasperPrint print = JasperFillManager.fillReport(report, param, conn);
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.err.println(ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
 
     }// GEN-LAST:event_laporanPrioritasKriteriaMouseClicked
 
@@ -691,6 +726,15 @@ public class MenuUtama extends javax.swing.JFrame {
     private void laporanDataMotorMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanDataMotorMouseClicked
         // TODO add your handling code here:
         showSubMenu(slideMenuPengaturan);
+        try {
+            String report = "./src/laporan/LaporanDataMotor.jasper";
+            HashMap<String, Object> param = new HashMap<>();
+            JasperPrint print = JasperFillManager.fillReport(report, param, conn);
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.err.println(ex);
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
 
     }// GEN-LAST:event_laporanDataMotorMouseClicked
 

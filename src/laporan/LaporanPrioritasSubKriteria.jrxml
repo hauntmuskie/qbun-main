@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan prioritas sub kriteria" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a35a0630-0e03-4d5f-8867-47fd086f8695">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
@@ -60,41 +61,34 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="119" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="f0f68e88-9493-47b6-bea2-afcf1afc56bd" x="100" y="0" width="375" height="30"/>
-				<textElement textAlignment="Center" markup="none">
-					<font fontName="Times New Roman" size="20" isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[Pemilihan Paket Makanan]]></text>
-			</staticText>
+		<band height="114" splitType="Stretch">
 			<image onErrorType="Icon">
-				<reportElement uuid="2c76676b-63bc-493f-8397-a8a78bbc82c3" key="" x="0" y="0" width="100" height="105"/>
-				<imageExpression><![CDATA[$P{PATH_IMG}+"Logo Tamarind 150x150.png"]]></imageExpression>
+				<reportElement key="" x="0" y="0" width="100" height="105" uuid="2c76676b-63bc-493f-8397-a8a78bbc82c3"/>
+				<imageExpression><![CDATA["https://github.com/hauntmuskie/qbun-main/blob/main/src/image/image%20(1).png?raw=true"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement uuid="24420867-119c-4247-bddc-fc9aa94c8b3b" x="100" y="30" width="375" height="30"/>
+				<reportElement x="110" y="10" width="375" height="30" uuid="24420867-119c-4247-bddc-fc9aa94c8b3b"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Times New Roman" size="20" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Tamarind by Tastes of India]]></text>
+				<text><![CDATA[Dealer Buncit Motor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ca1b2c60-1bab-4032-8065-18763fff9495" x="100" y="75" width="375" height="30"/>
+				<reportElement x="110" y="55" width="375" height="30" uuid="ca1b2c60-1bab-4032-8065-18763fff9495"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Times New Roman" size="12" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Jl. Puri Bunga No.3, RT.06/RW03, Cilandak Timur, Kecamatan Pasar Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12560.]]></text>
+				<text><![CDATA[Jl. Bangka XI, Bangka, Kec. Mampang Prapatan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12720.]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="3dca53f9-4a8b-488d-a484-2fbddfa8fea9" x="0" y="113" width="555" height="1"/>
+				<reportElement x="0" y="113" width="555" height="1" uuid="3dca53f9-4a8b-488d-a484-2fbddfa8fea9"/>
 			</line>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="3a8735f4-c1cf-4e2c-900f-c320717556d5" positionType="Float" x="0" y="0" width="555" height="35"/>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="35" uuid="3a8735f4-c1cf-4e2c-900f-c320717556d5"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Times New Roman" size="18" isBold="true" isItalic="false" pdfFontName="Helvetica"/>
 				</textElement>
@@ -105,15 +99,15 @@
 	<columnHeader>
 		<band height="234" splitType="Stretch">
 			<componentElement>
-				<reportElement uuid="c159c6a7-a431-474f-b5d2-ca970e758872" key="table" style="table" x="0" y="0" width="555" height="86"/>
+				<reportElement key="table" style="table" x="0" y="0" width="555" height="86" uuid="c159c6a7-a431-474f-b5d2-ca970e758872"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Data SubKriteria" uuid="765b8ead-9bda-43fe-9cd2-3ecc28a29a66">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column uuid="6441a226-44b9-439b-a553-56fb9582e1b0" width="36">
+					<jr:column width="36" uuid="6441a226-44b9-439b-a553-56fb9582e1b0">
 						<jr:tableHeader style="table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement uuid="7aaae574-ca0a-4e02-9a1f-9333a12b8e03" mode="Opaque" x="0" y="0" width="36" height="25" backcolor="#CCCCFF"/>
+								<reportElement mode="Opaque" x="0" y="0" width="36" height="25" backcolor="#CCCCFF" uuid="7aaae574-ca0a-4e02-9a1f-9333a12b8e03"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Times New Roman" size="10" isBold="true"/>
 								</textElement>
@@ -125,7 +119,7 @@
 						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="5ee176e5-29ec-4313-9e1b-f9998cd0336c" x="0" y="0" width="36" height="20"/>
+								<reportElement x="0" y="0" width="36" height="20" uuid="5ee176e5-29ec-4313-9e1b-f9998cd0336c"/>
 								<textElement textAlignment="Center">
 									<font fontName="Times New Roman"/>
 									<paragraph leftIndent="4"/>
@@ -134,10 +128,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="102a7784-c9f5-4269-a5df-f8ef7f8b46db" width="77">
+					<jr:column width="77" uuid="102a7784-c9f5-4269-a5df-f8ef7f8b46db">
 						<jr:tableHeader style="table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement uuid="f2accb4e-4d7a-454e-ac71-ee7e716ce7bf" mode="Opaque" x="0" y="0" width="77" height="25" backcolor="#CCCCFF"/>
+								<reportElement mode="Opaque" x="0" y="0" width="77" height="25" backcolor="#CCCCFF" uuid="f2accb4e-4d7a-454e-ac71-ee7e716ce7bf"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Times New Roman" size="10" isBold="true"/>
 								</textElement>
@@ -149,7 +143,7 @@
 						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="5f2b5fa2-2d54-498d-9b2e-75708a1aa833" x="0" y="0" width="77" height="20"/>
+								<reportElement x="0" y="0" width="77" height="20" uuid="5f2b5fa2-2d54-498d-9b2e-75708a1aa833"/>
 								<textElement textAlignment="Center">
 									<font fontName="Times New Roman"/>
 									<paragraph leftIndent="4"/>
@@ -158,10 +152,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="d2388eff-393c-4aff-afa0-0bca13566a16" width="130">
+					<jr:column width="130" uuid="d2388eff-393c-4aff-afa0-0bca13566a16">
 						<jr:tableHeader style="table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement uuid="7742bb4e-7fc4-46dd-9d29-039ca6241bc2" mode="Opaque" x="0" y="0" width="130" height="25" backcolor="#CCCCFF"/>
+								<reportElement mode="Opaque" x="0" y="0" width="130" height="25" backcolor="#CCCCFF" uuid="7742bb4e-7fc4-46dd-9d29-039ca6241bc2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Times New Roman" size="10" isBold="true"/>
 								</textElement>
@@ -173,7 +167,7 @@
 						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="e680f9ac-8e41-41c2-b4af-3b7cdc05e3e1" x="0" y="0" width="130" height="20"/>
+								<reportElement x="0" y="0" width="130" height="20" uuid="e680f9ac-8e41-41c2-b4af-3b7cdc05e3e1"/>
 								<textElement>
 									<font fontName="Times New Roman"/>
 									<paragraph leftIndent="4"/>
@@ -182,10 +176,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="09de55ea-7f71-4777-828a-7cab40707d88" width="136">
+					<jr:column width="136" uuid="09de55ea-7f71-4777-828a-7cab40707d88">
 						<jr:tableHeader style="table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement uuid="e50817c6-95f7-4839-8cfe-ed21484eb143" mode="Opaque" x="0" y="0" width="136" height="25" backcolor="#CCCCFF"/>
+								<reportElement mode="Opaque" x="0" y="0" width="136" height="25" backcolor="#CCCCFF" uuid="e50817c6-95f7-4839-8cfe-ed21484eb143"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Times New Roman" size="10" isBold="true"/>
 								</textElement>
@@ -197,7 +191,7 @@
 						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="790b6171-b70d-4126-b251-af2999afab85" x="0" y="0" width="136" height="20"/>
+								<reportElement x="0" y="0" width="136" height="20" uuid="790b6171-b70d-4126-b251-af2999afab85"/>
 								<textElement>
 									<font fontName="Times New Roman"/>
 									<paragraph leftIndent="4"/>
@@ -206,10 +200,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="35e97fd5-fcfa-4827-b7ff-fa8bb8549cc1" width="167">
+					<jr:column width="167" uuid="35e97fd5-fcfa-4827-b7ff-fa8bb8549cc1">
 						<jr:tableHeader style="table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement uuid="20c69b88-e094-4d89-b3ac-9bb890d51f2c" mode="Opaque" x="0" y="0" width="167" height="25" backcolor="#CCCCFF"/>
+								<reportElement mode="Opaque" x="0" y="0" width="167" height="25" backcolor="#CCCCFF" uuid="20c69b88-e094-4d89-b3ac-9bb890d51f2c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Times New Roman" size="10" isBold="true"/>
 								</textElement>
@@ -221,7 +215,7 @@
 						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="26905417-93fd-46a9-ba68-83b8551fb1e9" x="0" y="0" width="167" height="20"/>
+								<reportElement x="0" y="0" width="167" height="20" uuid="26905417-93fd-46a9-ba68-83b8551fb1e9"/>
 								<textElement>
 									<font fontName="Times New Roman"/>
 									<paragraph leftIndent="4"/>
@@ -232,60 +226,36 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<line>
-				<reportElement uuid="812083d4-95bb-4350-b9a6-e4768d39703b" positionType="Float" x="390" y="214" width="165" height="1"/>
-			</line>
-			<staticText>
-				<reportElement uuid="b1267653-2ae2-4de2-8204-d57a8356e3b5" positionType="Float" x="10" y="137" width="165" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<text><![CDATA[Manager Tamarind]]></text>
-			</staticText>
-			<line>
-				<reportElement uuid="68da9153-e86b-43cf-aae9-babf865a0bb3" positionType="Float" x="10" y="214" width="165" height="1"/>
-			</line>
-			<staticText>
-				<reportElement uuid="bb1f636b-4b10-4f78-a35d-6b25a0bff5b0" positionType="Float" x="390" y="137" width="165" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<text><![CDATA[Dibuat oleh,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9be7ff10-e7e3-49ab-a3c5-942e05b05002" positionType="Float" x="390" y="117" width="37" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<text><![CDATA[Jakarta, ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="34e27a88-a82d-4d9c-af73-1e4112d74ce6" positionType="Float" x="390" y="214" width="165" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="12"/>
-				</textElement>
-				<text><![CDATA[(Admin)]]></text>
-			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement uuid="eae5f596-88a3-49cc-97c0-d6d797a8d59e" positionType="Float" x="427" y="117" width="128" height="20"/>
+				<reportElement positionType="Float" x="431" y="119" width="128" height="20" uuid="0a04b2f0-1bb7-457c-9630-c862e5117043"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="a466187e-f445-4865-816a-710a165a4922" positionType="Float" x="10" y="117" width="165" height="20"/>
+				<reportElement positionType="Float" x="390" y="139" width="165" height="20" uuid="a27d8aad-f3b8-40b1-b43d-677a1c195fac"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<text><![CDATA[Mengetahui, ]]></text>
+				<text><![CDATA[Manager Dealer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d0984187-0f97-4c3a-8e07-c91db6c2e18a" positionType="Float" x="10" y="214" width="165" height="20"/>
+				<reportElement positionType="Float" x="390" y="214" width="165" height="20" uuid="5262eca8-3c55-47c7-9747-a49cd733dc28"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<text><![CDATA[(Suharti)]]></text>
+				<text><![CDATA[Suwarno]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="390" y="214" width="165" height="1" uuid="a3b58988-a394-4134-9b6f-f8593002fec6"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="390" y="119" width="37" height="20" uuid="0839d816-a4fe-489f-887f-23fd93341bb0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Jakarta, ]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
