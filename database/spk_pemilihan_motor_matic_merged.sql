@@ -59,7 +59,7 @@ CREATE TABLE `data_motor` (
   `kategori_harga` varchar(30) NOT NULL,
   `kategori_cc` varchar(30) NOT NULL,
   `kategori_irit` varchar(30) NOT NULL,
-  `kategori_desain` varchar(30) NOT NULL
+  `kategori_desain` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -69,11 +69,11 @@ CREATE TABLE `data_motor` (
 
 INSERT INTO `data_motor` (`id_motor`, `nama_motor`, `merek`, `tahun_produksi`, `warna_motor`, `kategori_harga`, `kategori_cc`, `kategori_irit`, `kategori_desain`) VALUES
 ('M001', 'Yamaha Gear 125', 'Yamaha', '2023', 'Merah', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
-('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', '2024', 'Putih', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish'),
+('M002', 'Yamaha Fazzio Hybrid', 'Yamaha', '2024', 'Putih', 'MENENGAH 22 – 35 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish'),
 ('M003', 'Yamaha XMAX Connected', 'Yamaha', '2024', 'Biru', 'PREMIUM > 35 juta', 'Besar (Premium) > 160 cc', 'Sedang 40–49 km/l', 'Futuristik/Modern'),
 ('M004', 'Honda Vario 160 CBS', 'Honda', '2023', 'Hitam', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Sporty/Agresif'),
 ('M005', 'Honda PCX 160 CBS', 'Honda', '2024', 'Silver', 'MENENGAH 22 – 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Futuristik/Modern'),
-('M006', 'Honda Scoopy', 'Honda', '2022', 'Putih', 'EKONOMIS ≤ 22 juta', 'Kecil (Entry) 110 – 125 cc', 'Irit ≥ 50 km/l', 'Retro/Stylish');
+('M006', 'Honda ADV 160 CBS', 'Honda', '2023', 'Hitam', 'PREMIUM > 35 juta', 'Sedang (Mid-range) 150 – 160 cc', 'Irit ≥ 50 km/l', 'Futuristik/Modern');
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ CREATE TABLE `seleksi` (
   `id_motor` char(5) NOT NULL,
   `nama_motor` varchar(50) NOT NULL,
   `merek` varchar(30) NOT NULL,
-  `hasil_penilaian` decimal(4,2) NOT NULL,
+  `hasil_penilaian` decimal(6,3) NOT NULL,
   `ranking` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

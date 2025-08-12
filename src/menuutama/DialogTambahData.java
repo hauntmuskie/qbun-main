@@ -85,7 +85,7 @@ public class DialogTambahData extends javax.swing.JDialog {
                 }
         }
 
-        private void insertDataPaket() {
+        private void insertDataMotor() {
                 String sql = "INSERT INTO data_motor VALUES (?,?,?,?,?,?,?,?,?)";
                 try {
                         PreparedStatement stat = conn.prepareStatement(sql);
@@ -111,10 +111,11 @@ public class DialogTambahData extends javax.swing.JDialog {
                         tNoId.requestFocus();
                 } catch (SQLException e) {
                         JOptionPane.showMessageDialog(null, "Data Gagal Disimpan " + e);
+                        System.err.println(e.getMessage());
                 }
         }
 
-        private void editDataPaket() {
+        private void editDataMotor() {
                 try {
                         String sql = "UPDATE data_motor set nama_motor=?, merek=?, tahun_produksi=?, warna_motor=?, kategori_harga=?, kategori_cc=?, kategori_irit=?, kategori_desain=? WHERE id_motor=?";
                         PreparedStatement stat = conn.prepareStatement(sql);
@@ -140,6 +141,7 @@ public class DialogTambahData extends javax.swing.JDialog {
                         tNoId.requestFocus();
                 } catch (SQLException e) {
                         JOptionPane.showMessageDialog(null, "Data Gagal DiUbah " + e);
+                        System.err.println(e.getMessage());
                 }
         }
 
@@ -585,7 +587,7 @@ public class DialogTambahData extends javax.swing.JDialog {
                                 && cbHarga.getSelectedIndex() != 0
                                 && cbmesin.getSelectedIndex() != 0 && cbIritBensin.getSelectedIndex() != 0
                                 && cbDesain.getSelectedIndex() != 0) {
-                        insertDataPaket();
+                        insertDataMotor();
                         dispose();
                 } else {
                         JOptionPane.showMessageDialog(rootPane, "Mohon isi semua kolom data motor pada form !", "Error",
@@ -606,7 +608,7 @@ public class DialogTambahData extends javax.swing.JDialog {
 
         private void tombolEditMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tombolEditMouseClicked
                 // TODO add your handling code here:
-                editDataPaket();
+                editDataMotor();
                 dispose();
         }// GEN-LAST:event_tombolEditMouseClicked
 

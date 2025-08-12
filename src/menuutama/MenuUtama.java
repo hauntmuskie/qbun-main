@@ -14,7 +14,6 @@ import koneksi.Koneksi;
  */
 public class MenuUtama extends javax.swing.JFrame {
     Color hoverButton;
-    private Connection conn = new Koneksi().connect();
 
     /**
      * Creates new form NewJFrame
@@ -25,27 +24,15 @@ public class MenuUtama extends javax.swing.JFrame {
         Locale.setDefault(locale);
         setVisible(true);
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-        sliderMenuDefault();
+
+        slideMenuPengaturan.setVisible(true);
+        slideMenuLaporan.setVisible(true);
+        Menu.repaint();
+        Menu.revalidate();
         this.hoverButton = dataMotor.getBackground();
         Pane.add(Home);
         Pane.repaint();
         Pane.revalidate();
-
-        try {
-            if (conn != null && !conn.isClosed()) {
-                System.out.println("Database connection established.");
-            } else {
-                System.out.println("Database connection failed.");
-            }
-        } catch (Exception e) {
-            System.out.println("Error checking database connection: " + e.getMessage());
-        }
-    }
-
-    // untuk sliderMenu
-    private void sliderMenuDefault() {
-        slideMenuLaporan.setVisible(false);
-        slideMenuPengaturan.setVisible(false);
     }
 
     private void hiddenSubMenu() {
@@ -60,11 +47,19 @@ public class MenuUtama extends javax.swing.JFrame {
     }
 
     private void showSubMenu(JPanel subMenu) {
-        if (subMenu.isVisible() == false) {
-            hiddenSubMenu();
-            subMenu.setVisible(true);
+        // Only allow toggling for other submenus, not for slideMenuPengaturan or
+        // slideMenuLaporan
+        if (subMenu == slideMenuPengaturan) {
+            slideMenuPengaturan.setVisible(true);
+        } else if (subMenu == slideMenuLaporan) {
+            slideMenuLaporan.setVisible(true);
         } else {
-            subMenu.setVisible(false);
+            if (!subMenu.isVisible()) {
+                hiddenSubMenu();
+                subMenu.setVisible(true);
+            } else {
+                subMenu.setVisible(false);
+            }
         }
     }
 
@@ -77,7 +72,9 @@ public class MenuUtama extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         Home = new javax.swing.JPanel();
@@ -122,22 +119,26 @@ public class MenuUtama extends javax.swing.JFrame {
         javax.swing.GroupLayout HomeLayout = new javax.swing.GroupLayout(Home);
         Home.setLayout(HomeLayout);
         HomeLayout.setHorizontalGroup(
-            HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         HomeLayout.setVerticalGroup(
-            HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(551, Short.MAX_VALUE))
-        );
+                HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(HomeLayout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(551, Short.MAX_VALUE)));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 1200));
@@ -158,9 +159,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dataMotorMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 dataMotorMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 dataMotorMouseExited(evt);
             }
@@ -178,9 +181,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 kriteriaMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 kriteriaMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 kriteriaMouseExited(evt);
             }
@@ -199,9 +204,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 laporanDataMotorMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 laporanDataMotorMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 laporanDataMotorMouseExited(evt);
             }
@@ -217,9 +224,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 laporanPrioritasKriteriaMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 laporanPrioritasKriteriaMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 laporanPrioritasKriteriaMouseExited(evt);
             }
@@ -235,9 +244,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 laporanPrioritasSubKriteriaMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 laporanPrioritasSubKriteriaMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 laporanPrioritasSubKriteriaMouseExited(evt);
             }
@@ -253,9 +264,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 laporanHasilSeleksiMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 laporanHasilSeleksiMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 laporanHasilSeleksiMouseExited(evt);
             }
@@ -264,23 +277,29 @@ public class MenuUtama extends javax.swing.JFrame {
         javax.swing.GroupLayout slideMenuLaporanLayout = new javax.swing.GroupLayout(slideMenuLaporan);
         slideMenuLaporan.setLayout(slideMenuLaporanLayout);
         slideMenuLaporanLayout.setHorizontalGroup(
-            slideMenuLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(laporanDataMotor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(laporanPrioritasKriteria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(laporanPrioritasSubKriteria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(laporanHasilSeleksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                slideMenuLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(laporanDataMotor, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(laporanPrioritasKriteria, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(laporanPrioritasSubKriteria, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(laporanHasilSeleksi, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         slideMenuLaporanLayout.setVerticalGroup(
-            slideMenuLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(slideMenuLaporanLayout.createSequentialGroup()
-                .addComponent(laporanDataMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(laporanPrioritasKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(laporanPrioritasSubKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(laporanHasilSeleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                slideMenuLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(slideMenuLaporanLayout.createSequentialGroup()
+                                .addComponent(laporanDataMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(laporanPrioritasKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(laporanPrioritasSubKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(laporanHasilSeleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         laporan.setBackground(new java.awt.Color(0, 0, 51));
         laporan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -293,9 +312,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 laporanMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 laporanMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 laporanMouseExited(evt);
             }
@@ -314,9 +335,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuPengaturanKriteriaMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 menuPengaturanKriteriaMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 menuPengaturanKriteriaMouseExited(evt);
             }
@@ -332,9 +355,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuPengaturanSubKriteriaMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 menuPengaturanSubKriteriaMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 menuPengaturanSubKriteriaMouseExited(evt);
             }
@@ -343,17 +368,19 @@ public class MenuUtama extends javax.swing.JFrame {
         javax.swing.GroupLayout slideMenuPengaturanLayout = new javax.swing.GroupLayout(slideMenuPengaturan);
         slideMenuPengaturan.setLayout(slideMenuPengaturanLayout);
         slideMenuPengaturanLayout.setHorizontalGroup(
-            slideMenuPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuPengaturanKriteria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menuPengaturanSubKriteria, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-        );
+                slideMenuPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(menuPengaturanKriteria, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menuPengaturanSubKriteria, javax.swing.GroupLayout.DEFAULT_SIZE, 192,
+                                Short.MAX_VALUE));
         slideMenuPengaturanLayout.setVerticalGroup(
-            slideMenuPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(slideMenuPengaturanLayout.createSequentialGroup()
-                .addComponent(menuPengaturanKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuPengaturanSubKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                slideMenuPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(slideMenuPengaturanLayout.createSequentialGroup()
+                                .addComponent(menuPengaturanKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(menuPengaturanSubKriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 27,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         seleksi.setBackground(new java.awt.Color(0, 0, 51));
         seleksi.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -366,9 +393,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 seleksiMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 seleksiMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 seleksiMouseExited(evt);
             }
@@ -377,30 +406,40 @@ public class MenuUtama extends javax.swing.JFrame {
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(slideMenuPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(seleksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(laporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(slideMenuLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(dataMotor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(kriteria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(slideMenuPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(seleksi, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(laporan, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(slideMenuLaporan, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dataMotor, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(kriteria, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         MenuLayout.setVerticalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addComponent(dataMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(slideMenuPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(seleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(slideMenuLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(MenuLayout.createSequentialGroup()
+                                .addComponent(dataMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(kriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 61,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(slideMenuPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(seleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(slideMenuLaporan, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         judul1.setBackground(new java.awt.Color(255, 0, 0));
         judul1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
@@ -427,9 +466,11 @@ public class MenuUtama extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 logoutMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 logoutMouseExited(evt);
             }
@@ -438,40 +479,48 @@ public class MenuUtama extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(judul1, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
-        );
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 192,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(judul1, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE));
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(judul1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(judul1, javax.swing.GroupLayout.PREFERRED_SIZE, 105,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 39,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -577,8 +626,7 @@ public class MenuUtama extends javax.swing.JFrame {
     }// GEN-LAST:event_laporanMouseEntered
 
     private void laporanMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanMouseClicked
-        // TODO add your handling code here:
-        showSubMenu(slideMenuLaporan);
+        // Do nothing, submenu is always visible
     }// GEN-LAST:event_laporanMouseClicked
 
     private void laporanHasilSeleksiMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanHasilSeleksiMouseExited
@@ -642,6 +690,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void laporanDataMotorMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_laporanDataMotorMouseClicked
         // TODO add your handling code here:
+        showSubMenu(slideMenuPengaturan);
 
     }// GEN-LAST:event_laporanDataMotorMouseClicked
 
@@ -657,8 +706,7 @@ public class MenuUtama extends javax.swing.JFrame {
     }// GEN-LAST:event_kriteriaMouseEntered
 
     private void kriteriaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_kriteriaMouseClicked
-        // TODO add your handling code here:
-        showSubMenu(slideMenuPengaturan);
+        // Do nothing, submenu is always visible
     }// GEN-LAST:event_kriteriaMouseClicked
 
     private void dataMotorMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_dataMotorMouseExited
