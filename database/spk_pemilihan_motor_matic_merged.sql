@@ -146,8 +146,8 @@ CREATE TABLE `seleksi` (
 CREATE TABLE `sub_kriteria` (
   `no_sub` int(3) NOT NULL,
   `kd_kriteria` char(3) NOT NULL,
-  `nama_kriteria` varchar(30) NOT NULL,
-  `nama_sub_kriteria` varchar(30) NOT NULL,
+  `nama_kriteria` varchar(100) NOT NULL,
+  `nama_sub_kriteria` varchar(100) NOT NULL,
   `prioritas_kepentingan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
