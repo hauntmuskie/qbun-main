@@ -105,7 +105,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -884,7 +884,6 @@
                                               <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="PriorS14" linkSize="4" max="32767" attributes="0"/>
                                               <Component id="PriorS13" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                               <Component id="PriorS12" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                               <Component id="PriorS11" linkSize="4" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
@@ -894,7 +893,6 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="PriorS24" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                               <Component id="PriorS23" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                               <Component id="PriorS22" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                               <Component id="PriorS21" linkSize="4" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
@@ -909,7 +907,6 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="PriorS34" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="PriorS33" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="PriorS32" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="PriorS31" linkSize="4" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
@@ -923,7 +920,6 @@
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="PriorS44" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                           <Component id="PriorS43" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                           <Component id="PriorS42" linkSize="4" alignment="0" max="32767" attributes="0"/>
                                           <Component id="PriorS41" linkSize="4" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
@@ -956,8 +952,6 @@
                                       <Component id="PriorS32" linkSize="3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="PriorS33" linkSize="3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="PriorS34" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
@@ -969,8 +963,6 @@
                                       <Component id="PriorS22" linkSize="3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="PriorS23" linkSize="3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="PriorS24" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
@@ -982,8 +974,6 @@
                                       <Component id="PriorS12" linkSize="3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="PriorS13" linkSize="3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="PriorS14" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
@@ -995,11 +985,9 @@
                                       <Component id="PriorS42" linkSize="3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="PriorS43" linkSize="3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="PriorS44" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1075,12 +1063,6 @@
                         <Property name="horizontalAlignment" type="int" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="PriorS14">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel24">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1102,12 +1084,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="PriorS23">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="PriorS24">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="horizontalAlignment" type="int" value="0"/>
@@ -1139,12 +1115,6 @@
                         <Property name="horizontalAlignment" type="int" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="PriorS34">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel26">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1166,12 +1136,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="PriorS43">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="PriorS44">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="horizontalAlignment" type="int" value="0"/>

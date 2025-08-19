@@ -105,7 +105,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS11.setText(df.format(subWeights[0][0]));
                 PriorS12.setText(df.format(subWeights[0][1]));
                 PriorS13.setText(df.format(subWeights[0][2]));
-                PriorS14.setText("");
 
                 SubKriteriaAhp.setNilaiSubkriteriaCC();
                 SubKriteriaAhp.MatriksBerpasangan3x3();
@@ -113,7 +112,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS21.setText(df.format(subWeights[1][0]));
                 PriorS22.setText(df.format(subWeights[1][1]));
                 PriorS23.setText(df.format(subWeights[1][2]));
-                PriorS24.setText("");
 
                 SubKriteriaAhp.setNilaiSubkriteriaIrit();
                 SubKriteriaAhp.MatriksBerpasangan3x3();
@@ -121,7 +119,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS31.setText(df.format(subWeights[2][0]));
                 PriorS32.setText(df.format(subWeights[2][1]));
                 PriorS33.setText(df.format(subWeights[2][2]));
-                PriorS34.setText("");
 
                 SubKriteriaAhp.setNilaiSubkriteriaDesain();
                 SubKriteriaAhp.MatriksBerpasangan3x3();
@@ -129,7 +126,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS41.setText(df.format(subWeights[3][0]));
                 PriorS42.setText(df.format(subWeights[3][1]));
                 PriorS43.setText(df.format(subWeights[3][2]));
-                PriorS44.setText("");
 
         }
 
@@ -285,9 +281,11 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
          */
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
+                btnG = new javax.swing.ButtonGroup();
                 PanelPerhitungan = new javax.swing.JPanel();
                 judul = new javax.swing.JLabel();
                 jScrollPane1 = new javax.swing.JScrollPane();
@@ -361,22 +359,18 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS11 = new javax.swing.JTextField();
                 PriorS12 = new javax.swing.JTextField();
                 PriorS13 = new javax.swing.JTextField();
-                PriorS14 = new javax.swing.JTextField();
                 jLabel24 = new javax.swing.JLabel();
                 PriorS21 = new javax.swing.JTextField();
                 PriorS22 = new javax.swing.JTextField();
                 PriorS23 = new javax.swing.JTextField();
-                PriorS24 = new javax.swing.JTextField();
                 jLabel25 = new javax.swing.JLabel();
                 PriorS31 = new javax.swing.JTextField();
                 PriorS32 = new javax.swing.JTextField();
                 PriorS33 = new javax.swing.JTextField();
-                PriorS34 = new javax.swing.JTextField();
                 jLabel26 = new javax.swing.JLabel();
                 PriorS41 = new javax.swing.JTextField();
                 PriorS42 = new javax.swing.JTextField();
                 PriorS43 = new javax.swing.JTextField();
-                PriorS44 = new javax.swing.JTextField();
                 jPanel6 = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 jLabel27 = new javax.swing.JLabel();
@@ -401,7 +395,7 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 mulaiHitung.setBackground(new java.awt.Color(0, 0, 51));
                 mulaiHitung.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
                 mulaiHitung.setForeground(new java.awt.Color(255, 255, 255));
-                mulaiHitung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image (9).png"))); // NOI18N
+                mulaiHitung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Icon Hitung Small.png"))); // NOI18N
                 mulaiHitung.setText("HITUNG");
                 mulaiHitung.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1200,9 +1194,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS13.setEditable(false);
                 PriorS13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-                PriorS14.setEditable(false);
-                PriorS14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
                 jLabel24.setForeground(new java.awt.Color(255, 237, 192));
                 jLabel24.setText("Prioritas Sub-Kriteria");
 
@@ -1214,9 +1205,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
 
                 PriorS23.setEditable(false);
                 PriorS23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-                PriorS24.setEditable(false);
-                PriorS24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
                 jLabel25.setForeground(new java.awt.Color(255, 237, 192));
                 jLabel25.setText("Prioritas Sub-Kriteria");
@@ -1230,9 +1218,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PriorS33.setEditable(false);
                 PriorS33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-                PriorS34.setEditable(false);
-                PriorS34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
                 jLabel26.setForeground(new java.awt.Color(255, 237, 192));
                 jLabel26.setText("Prioritas Sub-Kriteria");
 
@@ -1244,9 +1229,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
 
                 PriorS43.setEditable(false);
                 PriorS43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-                PriorS44.setEditable(false);
-                PriorS44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
                 javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
                 jPanel4.setLayout(jPanel4Layout);
@@ -1273,7 +1255,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                                                 .createParallelGroup(
                                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                                                 false)
-                                                                                                                                .addComponent(PriorS14)
                                                                                                                                 .addComponent(PriorS13)
                                                                                                                                 .addComponent(PriorS12)
                                                                                                                                 .addComponent(PriorS11,
@@ -1291,7 +1272,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                                                 .createParallelGroup(
                                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                                                 false)
-                                                                                                                                .addComponent(PriorS24)
                                                                                                                                 .addComponent(PriorS23)
                                                                                                                                 .addComponent(PriorS22)
                                                                                                                                 .addComponent(PriorS21,
@@ -1315,7 +1295,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                                                                 .createParallelGroup(
                                                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                                                                 false)
-                                                                                                                                                .addComponent(PriorS34)
                                                                                                                                                 .addComponent(PriorS33)
                                                                                                                                                 .addComponent(PriorS32)
                                                                                                                                                 .addComponent(PriorS31,
@@ -1334,7 +1313,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                                 .createParallelGroup(
                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                                 false)
-                                                                                                                .addComponent(PriorS44)
                                                                                                                 .addComponent(PriorS43)
                                                                                                                 .addComponent(PriorS42)
                                                                                                                 .addComponent(PriorS41,
@@ -1353,10 +1331,8 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                 .addGap(20, 20, 20)));
 
                 jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL,
-                                new java.awt.Component[] { PriorS11, PriorS12, PriorS13, PriorS14, PriorS21, PriorS22,
-                                                PriorS23,
-                                                PriorS24, PriorS31, PriorS32, PriorS33, PriorS34, PriorS41, PriorS42,
-                                                PriorS43, PriorS44 });
+                                new java.awt.Component[] { PriorS11, PriorS12, PriorS13, PriorS21, PriorS22, PriorS23,
+                                                PriorS31, PriorS32, PriorS33, PriorS41, PriorS42, PriorS43 });
 
                 jPanel4Layout.setVerticalGroup(
                                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1389,12 +1365,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                 .addComponent(PriorS33,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                                .addComponent(PriorS34,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                 .addGroup(jPanel4Layout
                                                                                                 .createSequentialGroup()
@@ -1416,12 +1386,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                 .addPreferredGap(
                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                                                 .addComponent(PriorS23,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                                .addComponent(PriorS24,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1448,12 +1412,6 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                 .addComponent(PriorS13,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                                .addComponent(PriorS14,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                 .addGroup(jPanel4Layout
                                                                                                 .createSequentialGroup()
@@ -1478,20 +1436,12 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                                 .addComponent(PriorS43,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                                .addComponent(PriorS44,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addGap(20, 20, 20)));
+                                                                .addContainerGap(15, Short.MAX_VALUE)));
 
                 jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL,
-                                new java.awt.Component[] { PriorS11, PriorS12, PriorS13, PriorS14, PriorS21, PriorS22,
-                                                PriorS23,
-                                                PriorS24, PriorS31, PriorS32, PriorS33, PriorS34, PriorS41, PriorS42,
-                                                PriorS43, PriorS44 });
+                                new java.awt.Component[] { PriorS11, PriorS12, PriorS13, PriorS21, PriorS22, PriorS23,
+                                                PriorS31, PriorS32, PriorS33, PriorS41, PriorS42, PriorS43 });
 
                 jPanel6.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -1676,10 +1626,9 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                 .addComponent(Simpan))
                                                                 .addPreferredGap(
                                                                                 javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(jPanel1Layout
-                                                                                .createParallelGroup(
-                                                                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                                                                false)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                false)
                                                                                 .addComponent(jPanel3,
                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -1697,7 +1646,7 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(20, 20, 20)));
+                                                                .addContainerGap()));
 
                 jScrollPane1.setViewportView(jPanel1);
 
@@ -1706,8 +1655,7 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 PanelPerhitunganLayout.setHorizontalGroup(
                                 PanelPerhitunganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE)
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jScrollPane1));
                 PanelPerhitunganLayout.setVerticalGroup(
                                 PanelPerhitunganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1733,13 +1681,11 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
                 layout.setHorizontalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE));
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
                 layout.setVerticalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE));
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
                 setSize(new java.awt.Dimension(888, 577));
                 setLocationRelativeTo(null);
@@ -1926,21 +1872,18 @@ public class DialogPerhitunganAHP extends javax.swing.JDialog {
         private javax.swing.JTextField PriorS11;
         private javax.swing.JTextField PriorS12;
         private javax.swing.JTextField PriorS13;
-        private javax.swing.JTextField PriorS14;
         private javax.swing.JTextField PriorS21;
         private javax.swing.JTextField PriorS22;
         private javax.swing.JTextField PriorS23;
-        private javax.swing.JTextField PriorS24;
         private javax.swing.JTextField PriorS31;
         private javax.swing.JTextField PriorS32;
         private javax.swing.JTextField PriorS33;
-        private javax.swing.JTextField PriorS34;
         private javax.swing.JTextField PriorS41;
         private javax.swing.JTextField PriorS42;
         private javax.swing.JTextField PriorS43;
-        private javax.swing.JTextField PriorS44;
         private javax.swing.JButton Simpan;
         private javax.swing.JTextField TotalNilai;
+        private javax.swing.ButtonGroup btnG;
         private javax.swing.JComboBox<String> cbIdMotor;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel10;
